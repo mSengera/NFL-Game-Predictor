@@ -1,68 +1,10 @@
-import nflgame
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
-datapoints = []
-
-nflyears = [2017]
-
-for year in nflyears:
-    games = nflgame.games(year)
-    plays = nflgame.combine_plays(games)
-
-    for g in games:
-        """
-        Proceed home team
-        """
-        new_data_home = {}
-
-        new_data_home['team'] = g.home
-        new_data_home['opponent'] = g.away
-        new_data_home['score'] = g.data['home']['score']['T']
-
-        passing_home = 0
-
-        for passing in g.data['home']['stats']['passing']:
-            passing_home = passing_home + g.data['home']['stats']['passing'][passing]['yds']
-
-        new_data_home['passing_yards'] = passing_home
-
-        rushing_home = 0
-
-        for rushing in g.data['home']['stats']['rushing']:
-            rushing_home = rushing_home + g.data['home']['stats']['rushing'][rushing]['yds']
-
-        new_data_home['rushing_yards'] = rushing_home
-
-        datapoints.append(new_data_home)
-
-        """
-        Proceed away team
-        """
-        new_data_away = {}
-
-        new_data_away['team'] = g.away
-        new_data_away['opponent'] = g.home
-        new_data_away['score'] = g.data['away']['score']['T']
-
-        passing_away = 0
-
-        for passing in g.data['away']['stats']['passing']:
-            passing_away = passing_away + g.data['away']['stats']['passing'][passing]['yds']
-
-        new_data_away['passing_yards'] = passing_away
-
-        rushing_away = 0
-
-        for rushing in g.data['away']['stats']['rushing']:
-            rushing_away = rushing_away + g.data['away']['stats']['rushing'][rushing]['yds']
-
-        new_data_away['rushing_yards'] = rushing_away
-
-        datapoints.append(new_data_away)
-
 """
-Predict Score with Passing- and Rushing Yards
+Usw newB generated in predict-score-with-yards_get-linear-refression.py
 """
+newB = [-5.58921627e+79, -1.47992621e+82, -6.35457306e+81]
 
+print('Get a prediction of game score by typing in passing and rushing yards of the game.')
+for seen_passing_yards in input('Passing yards: '):
+    seen_rushing_yards = input('Rushing yards: ')
 
+    print(newB[0] + newB[1] * float(seen_passing_yards) + newB[2] * float(seen_rushing_yards))
