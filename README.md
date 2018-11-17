@@ -6,7 +6,7 @@ I use the NFL Game API (https://api.nfl.com/docs/getting-started/index.html) for
 To prevent reengineering the whole nflgame data collection, I used following PyPi Project:
 - https://pypi.org/project/nflgame/
 
-Thanks to that really nice api conenctor @BruntShishi! (https://github.com/BurntSushi/nflgame)
+Thanks to that really nice api conenctor @BruntShishi ! (https://github.com/BurntSushi/nflgame)
 
 Special thanks to @mlenzen to port the nflgame extension to Python3! (https://github.com/mlenzen/nflgame)
 
@@ -27,3 +27,5 @@ The real points where 27 for the Broncos. My prediction was 29.59 Points.
 Linear regression gave me following function:
 
     Scores = -0.02393084 + 0.05351758 * passing_yards + 0.08413694 * rushing_yards
+    
+Linear regression is computed in tests/predict-score-with-yards_get-linear-regression.py
