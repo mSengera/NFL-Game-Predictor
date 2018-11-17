@@ -4,59 +4,81 @@ from mpl_toolkits.mplot3d import Axes3D
 
 datapoints = []
 
-games = nflgame.games(2017, week=1)
-plays = nflgame.combine_plays(games)
+nflyears = [2017]
 
-for g in games:
-    """
-    Proceed home team
-    """
-    new_data_home = {}
+for year in nflyears:
+    games = nflgame.games(year)
+    plays = nflgame.combine_plays(games)
 
-    new_data_home['team'] = g.home
-    new_data_home['opponent'] = g.away
-    new_data_home['score'] = g.data['home']['score']['T']
+    for g in games:
+        """
+        Proceed home team
+        """
+        new_data_home = {}
 
-    passing_home = 0
+        new_data_home['team'] = g.home
+        new_data_home['opponent'] = g.away
+        new_data_home['score'] = g.data['home']['score']['T']
 
-    for passing in g.data['home']['stats']['passing']:
-        passing_home = passing_home + g.data['home']['stats']['passing'][passing]['yds']
+        passing_home = 0
 
-    new_data_home['passing_yards'] = passing_home
+        for passing in g.data['home']['stats']['passing']:
+            passing_home = passing_home + g.data['home']['stats']['passing'][passing]['yds']
 
-    rushing_home = 0
+        new_data_home['passing_yards'] = passing_home
 
-    for rushing in g.data['home']['stats']['rushing']:
-        rushing_home = rushing_home + g.data['home']['stats']['rushing'][rushing]['yds']
+        rushing_home = 0
 
-    new_data_home['rushing_yards'] = rushing_home
+        for rushing in g.data['home']['stats']['rushing']:
+            rushing_home = rushing_home + g.data['home']['stats']['rushing'][rushing]['yds']
 
-    datapoints.append(new_data_home)
+        new_data_home['rushing_yards'] = rushing_home
 
-    """
-    Proceed away team
-    """
-    new_data_away = {}
+        datapoints.append(new_data_home)
 
-    new_data_away['team'] = g.away
-    new_data_away['opponent'] = g.home
-    new_data_away['score'] = g.data['away']['score']['T']
+        """
+        Proceed away team
+        """
+        new_data_away = {}
 
-    passing_away = 0
+        new_data_away['team'] = g.away
+        new_data_away['opponent'] = g.home
+        new_data_away['score'] = g.data['away']['score']['T']
 
-    for passing in g.data['away']['stats']['passing']:
-        passing_away = passing_away + g.data['away']['stats']['passing'][passing]['yds']
+        passing_away = 0
 
-    new_data_away['passing_yards'] = passing_away
+        for passing in g.data['away']['stats']['passing']:
+            passing_away = passing_away + g.data['away']['stats']['passing'][passing]['yds']
 
-    rushing_away = 0
+        new_data_away['passing_yards'] = passing_away
 
-    for rushing in g.data['away']['stats']['rushing']:
-        rushing_away = rushing_away + g.data['away']['stats']['rushing'][rushing]['yds']
+        rushing_away = 0
 
-    new_data_away['rushing_yards'] = rushing_away
+        for rushing in g.data['away']['stats']['rushing']:
+            rushing_away = rushing_away + g.data['away']['stats']['rushing'][rushing]['yds']
 
-    datapoints.append(new_data_away)
+        new_data_away['rushing_yards'] = rushing_away
 
-print(datapoints)
+        datapoints.append(new_data_away)
 
+"""
+Visualize data
+"""
+
+score = []
+ps_yrds = []
+rs_yrds = []
+
+for point in datapoints:
+    score.append(point['score'])
+    ps_yrds.append(point['passing_yards'])
+    rs_yrds.append(point['rushing_yards'])
+
+
+fig = plt.figure()
+ax = Axes3D(fig)
+ax.scatter(score, ps_yrds, rs_yrds, color='#ef1234')
+ax.set_xlabel('Score')
+ax.set_ylabel('Passing Yards')
+ax.set_zlabel('Rushing Yards')
+plt.show()
