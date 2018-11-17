@@ -28,4 +28,4 @@ Linear regression gave me following function:
 
     Scores = -0.02393084 + 0.05351758 * passing_yards + 0.08413694 * rushing_yards
     
-Linear regression is computed in predict-score-with-yards_get-linear-regression.py
+Linear regression is computed in tests/predict-score-with-yards_get-linear-regression.py
