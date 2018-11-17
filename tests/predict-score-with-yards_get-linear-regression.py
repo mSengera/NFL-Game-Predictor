@@ -111,13 +111,13 @@ X = np.array([x0, ps_yrds, rs_yrds]).T
 # Initial Coefficients
 B = np.array([0, 0, 0])
 Y = np.array(score)
-alpha = 0.0001
+alpha = 0.000001
 
 inital_cost = cost_function(X, Y, B)
 print(inital_cost)
 
 # 100.000 Iterations
-newB, cost_history = gradient_descent(X, Y, B, alpha, 100)
+newB, cost_history = gradient_descent(X, Y, B, alpha, 100000)
 
 # New Values of B
 print(newB)
