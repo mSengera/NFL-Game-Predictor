@@ -9,6 +9,8 @@ class CalculateRegressionFunction:
         data_model = GetData()
         data = data_model.get_rushing_yards_per_team(home_team, away_team)
 
+        print(data)
+
         exit()
 
         return [0, 0, 0]
