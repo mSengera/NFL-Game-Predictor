@@ -1,4 +1,6 @@
 from pathlib import Path
+from classes.calculateRegressionFunction import CalculateRegressionFunction
+
 
 class Predictor:
 
@@ -19,8 +21,11 @@ class Predictor:
         regression_function = Path("regression_functions/predict_rushing_yards/" + str(self.first_team) + "-" + str(self.second_team) + ".json")
 
         if regression_function.is_file():
+            function_parameter = [0, 0, 0]
             print("Load the regression function.")
         else:
             print("Generate the regression function.")
+            f = CalculateRegressionFunction()
+            function_parameter = f.regression_function_for_rushing_yards(self.first_team, self.second_team)
 
         exit()
