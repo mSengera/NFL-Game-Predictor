@@ -31,7 +31,7 @@ allowed_input = [
     'DET',  # Lions
     'GB',   # Packers
     'CAR',  # Panthers
-    'NE',  # Patriots
+    'NE',   # Patriots
     'OAK',  # Raiders
     'LAR',  # Rams
     'BAL',  # Ravens

@@ -18,9 +18,9 @@ class Predictor:
         """
         Start by predicting the rushing yards per team
         """
-        regression_function = Path("regression_functions/predict_rushing_yards/" + str(self.first_team) + "-" + str(self.second_team) + ".json")
+        data_function = Path("regression_functions/predict_rushing_yards/" + str(self.first_team) + "-" + str(self.second_team) + ".json")
 
-        if regression_function.is_file():
+        if data_function.is_file():
             function_parameter = [0, 0, 0]
             print("Load the regression function.")
         else:
