@@ -4,19 +4,16 @@ import numpy as np
 
 class CalculateRegressionFunction:
 
-    def regression_function_for_rushing_yards(self, home_team, away_team):
+    def calculate_average_rushing_yards(self, home_team, away_team):
         print('Calculating...')
 
         data_model = GetData()
         data = data_model.get_rushing_yards_per_team(home_team, away_team)
 
-        rushing_home = data[0]
-        rushing_away = data[1]
-
         average_rushing_home = sum(data[0]) / len(data[0])
         average_rushing_away = sum(data[1]) / len(data[1])
 
-        return [0, 0, 0]
+        return [average_rushing_home, average_rushing_away]
 
     """
     Linear Regression functions
