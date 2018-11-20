@@ -14,7 +14,7 @@ class GetData:
             games = nflgame.games(year)
 
             for g in games:
-                if g.home == home and g.away == away:
+                if (g.home == home and g.away == away) or (g.away == home and g.home == away):
                     rushing_home = 0
 
                     for rushing in g.data['home']['stats']['rushing']:
@@ -22,7 +22,7 @@ class GetData:
 
                     rushing_yards_home.append(rushing_home)
 
-                    # ========
+                    # ===================================================================================
 
                     rushing_away = 0
 

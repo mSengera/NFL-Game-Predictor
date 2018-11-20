@@ -7,7 +7,7 @@ print('-------------------------------')
 print('--- NFL Game Predictor --------')
 print('-------------------------------\n')
 
-print('Input in following way - DEN/NEP')
+print('Input in following way - DEN/NE')
 print('To exit, type "exit"\n')
 
 allowed_input = [
@@ -31,7 +31,7 @@ allowed_input = [
     'DET',  # Lions
     'GB',   # Packers
     'CAR',  # Panthers
-    'NEP',  # Patriots
+    'NE',  # Patriots
     'OAK',  # Raiders
     'LAR',  # Rams
     'BAL',  # Ravens
